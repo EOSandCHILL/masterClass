@@ -4,17 +4,67 @@ public class Dog extends Animal {
     private String earShape;
     private String tailShape;
     public Dog() {
-        super("Mutt", "big", 50); // superclass === parent class
-        // super is like "this()" when calling a constructor inside of a constructor.
-        // except super calls a constructor on the parent class. We're using it here
-        // to call Animals default constructor since we never created our own.
-        // Remember Java automatically creates default constructors
-        // if the programmer does not.
+        super("Mutt", "big", 50);
     }
 
-    public Dog(String type, double weight, String earShape, String tailShape) {
-        super(type, weight < 15 ? "small" : (weight < 35 ? "medium" : "large"), weight);
+
+    public Dog(String type, double weight) {
+        this(type, weight, "Perky", "Curled");
+    }
+
+
+    public Dog(String type, double weight,
+               String earShape, String tailShape) {
+        super(type,
+                weight < 15 ? "small" : (weight < 35 ? "medium" : "large"),
+                weight);
         this.earShape = earShape;
         this.tailShape = tailShape;
+    }
+
+    @Override
+    public String toString() {
+        return "Dog{" +
+                "earShape='" + earShape + '\'' +
+                ", tailShape='" + tailShape + '\'' +
+                "} " + super.toString();
+    }
+    public void makeNoise(){
+        if (type == "Wolf") {
+            System.out.print("Ow Wooooo! ");
+        }
+            bark();
+            System.out.println();
+
+    }
+
+    @Override
+    public void move(String speed) {
+        super.move(speed);
+//        System.out.printf("Dogs walk, run and wag their tail");
+        if (speed == "slow") {
+            walk();
+            wagTail();
+        } else {
+            run();
+            bark();
+        }
+        System.out.println();
+    }
+
+    public void bark() {
+        System.out.println("Woof! ");
+    }
+
+    public void run() {
+        System.out.println("Dog Running ");
+    }
+
+    public void walk() {
+        System.out.println("Dog Walking ");
+    }
+
+    public void wagTail() {
+        System.out.println("Tail Wagging ");
     }
 }

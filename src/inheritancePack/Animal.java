@@ -1,7 +1,13 @@
 package inheritancePack;
 
 public class Animal {
-    private String type;
+    protected String type;
+    // Conditional Encapsulation:
+    // The private modifier specifies that the member can only be
+    // accessed in its own class. The protected modifier specifies
+    // that the member can only be accessed within its own package
+    // (as with package-private) and, in addition, by a subclass of
+    // its class in another package.
     private String size;
     private double weight;
 
@@ -24,9 +30,11 @@ public class Animal {
                 '}';
     }
     public void move(String speed) {
+
         System.out.println(type + " moves " + speed);
     }
     public void makeNoise() {
+
         System.out.println(type + " makes some kind of noise");
     }
 }
